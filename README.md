@@ -1,35 +1,35 @@
 # eladmin-qt
 
-eladmin 前端源码
+eladmin front-end code
 
-#### 项目源码
+#### Project source code
 
-|     |   后端源码  |   前端源码  |
+|     |  Backend source  |   Front end source  |
 |---  |--- | --- |
 |  github   |  https://github.com/elunez/eladmin   |  https://github.com/elunez/eladmin-qd   |
-|  码云   |  https://gitee.com/elunez/eladmin   |  https://gitee.com/elunez/eladmin-qt   |
+|  gitee   |  https://gitee.com/elunez/eladmin   |  https://gitee.com/elunez/eladmin-qt   |
 
-#### 开发文档
+#### Development document
 [https://docs.auauz.net/#/](https://docs.auauz.net/#/)
 
-#### 前端模板
+#### Front end template
 
-初始模板基于： [https://github.com/PanJiaChen/vue-admin-template](https://github.com/PanJiaChen/vue-admin-template)
+The initial template is based on： [https://github.com/PanJiaChen/vue-admin-template](https://github.com/PanJiaChen/vue-admin-template)
 
-模板文档： [https://panjiachen.github.io/vue-element-admin-site/zh/guide/](https://panjiachen.github.io/vue-element-admin-site/zh/guide/)
+Template document： [https://panjiachen.github.io/vue-element-admin-site/zh/guide/](https://panjiachen.github.io/vue-element-admin-site/zh/guide/)
 
 #### Build Setup
 ``` bash
-# 安装依赖
+# Install dependencies
 npm install
 
-# 启动服务 localhost:8013
+# Start service localhost:8013
 npm run dev
 
-# 构建生产环境
+# Build for production environment
 npm run build
 ```
 
-#### 反馈交流
+#### Feedback
 
-- QQ交流群：891137268
+- Chat group：891137268
