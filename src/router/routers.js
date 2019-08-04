@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import i18n from '../lang/lang'
 
 Vue.use(Router)
 
@@ -18,6 +19,7 @@ import Layout from '../layout/Layout'
     icon: 'svg-name'             the icon show in the sidebar,
   }
 **/
+var lang = i18n.messages.en
 
 export const constantRouterMap = [
   { path: '/login',
@@ -54,8 +56,8 @@ export const constantRouterMap = [
       {
         path: 'dashboard',
         component: () => import('@/views/home'),
-        name: '首页',
-        meta: { title: '首页', icon: 'index', noCache: true, affix: true }
+        name: lang.home,
+        meta: { title: lang.home, icon: 'index', noCache: true, affix: true }
       }
     ]
   },
@@ -68,8 +70,8 @@ export const constantRouterMap = [
       {
         path: 'center',
         component: () => import('@/views/system/user/center'),
-        name: '个人中心',
-        meta: { title: '个人中心', icon: 'user' }
+        name: lang.profile,
+        meta: { title: lang.profile, icon: 'user' }
       }
     ]
   }
