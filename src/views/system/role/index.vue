@@ -5,8 +5,8 @@
     <!--工具栏-->
     <div class="head-container">
       <!-- 搜索 -->
-      <el-input v-model="query.value" clearable placeholder="输入名称搜索" style="width: 200px;" class="filter-item" @keyup.enter.native="toQuery"/>
-      <el-button class="filter-item" size="mini" type="success" icon="el-icon-search" @click="toQuery">搜索</el-button>
+      <el-input v-model="query.value" clearable :placeholder="$t('searchname')" style="width: 200px;" class="filter-item" @keyup.enter.native="toQuery"/>
+      <el-button class="filter-item" size="mini" type="success" icon="el-icon-search" @click="toQuery">{{ $t('search') }}</el-button>
       <!-- 新增 -->
       <div v-permission="['ADMIN','ROLES_ALL','ROLES_CREATE']" style="display: inline-block;margin: 0px 2px;">
         <el-button
@@ -14,7 +14,7 @@
           size="mini"
           type="primary"
           icon="el-icon-plus"
-          @click="add">新增</el-button>
+          @click="add">{{ $t('add') }}</el-button>
       </div>
     </div>
     <el-row :gutter="15">
@@ -22,10 +22,10 @@
       <el-col :xs="24" :sm="24" :md="16" :lg="16" :xl="17">
         <el-card class="box-card" shadow="never">
           <div slot="header" class="clearfix">
-            <span class="role-span">角色列表</span>
+            <span class="role-span">{{ $t('rolelist') }}</span>
             <div id="opt" style="float: right">
               <el-radio-group v-model="opt" size="mini">
-                <el-radio-button label="菜单分配"/>
+                <el-radio-button :label="$t('menuassignment')"/>
                 <el-radio-button label="权限分配"/>
               </el-radio-group>
             </div>
@@ -48,12 +48,11 @@
                   :ref="scope.row.id"
                   placement="top"
                   width="180">
-                  <p>确定删除本条数据吗？</p>
+                  <p{{ $t('confirmdeletion') }}</p>
                   <div style="text-align: right; margin: 0">
                     <el-button size="mini" type="text" @click="$refs[scope.row.id].doClose()">取消</el-button>
                     <el-button :loading="delLoading" type="primary" size="mini" @click="subDelete(scope.row.id)">确定</el-button>
-                  </div>
-                  <el-button slot="reference" type="danger" icon="el-icon-delete" size="mini"/>
+                  </div> <el-button slot="reference" type="danger" icon="el-icon-delete" size="mini"/>
                 </el-popover>
               </template>
             </el-table-column>
@@ -70,10 +69,10 @@
       </el-col>
       <!-- 授权 -->
       <el-col :xs="24" :sm="24" :md="8" :lg="8" :xl="7">
-        <el-card v-show="opt === '菜单分配'" class="box-card" shadow="never">
+        <el-card v-show="opt === $t('menuassignment')" class="box-card" shadow="never">
           <div slot="header" class="clearfix">
             <el-tooltip class="item" effect="dark" content="选择指定角色分配菜单" placement="top">
-              <span class="role-span">菜单分配</span>
+              <span class="role-span"> {{ $t('menuassignment') }} </span>
             </el-tooltip>
             <el-button
               v-permission="['ADMIN','ROLES_ALL','ROLES_EDIT']"
@@ -132,6 +131,9 @@ import { getMenusTree } from '@/api/menu'
 import { parseTime } from '@/utils/index'
 import eForm from './form'
 import { editPermission, editMenu, get } from '@/api/role'
+import i18n from '../../../lang/lang'
+
+var lang = i18n.messages.en
 export default {
   components: { eForm },
   mixins: [initData],
@@ -141,7 +143,7 @@ export default {
         children: 'children',
         label: 'label'
       },
-      currentId: 0, permissionLoading: false, menuLoading: false, showButton: false, opt: '菜单分配',
+      currentId: 0, permissionLoading: false, menuLoading: false, showButton: false, opt: lang.menuassignment,
       delLoading: false, permissions: [], permissionIds: [], menus: [], menuIds: []
     }
   },
