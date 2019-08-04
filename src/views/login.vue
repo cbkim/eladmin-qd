@@ -1,31 +1,33 @@
 <template>
   <div class="login">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" label-position="left" label-width="0px" class="login-form">
-      <h3 class="title">EL-ADMIN 后台管理系统</h3>
+      <div class="logon-header"> <img style="vertical-align:middle" src="https://storage.googleapis.com/csq-oms-static/csq/images/logo-main.png" alt=""> <span style="vertical-align: middle;"> -- IMS </span>  </div>
+      <h3 class="title">{{ $t('systemname') }} </h3>
       <el-form-item prop="username">
-        <el-input v-model="loginForm.username" type="text" auto-complete="off" placeholder="账号">
+        <el-input v-model="loginForm.username" :placeholder="$t('placeholderusername')" auto-complete="off" type="text">
           <svg-icon slot="prefix" icon-class="user" class="el-input__icon input-icon"/>
         </el-input>
       </el-form-item>
       <el-form-item prop="password">
-        <el-input v-model="loginForm.password" type="password" auto-complete="off" placeholder="密码" @keyup.enter.native="handleLogin">
+        <el-input v-model="loginForm.password" :placeholder="$t('password')" type="password" auto-complete="off" @keyup.enter.native="handleLogin">
           <svg-icon slot="prefix" icon-class="password" class="el-input__icon input-icon"/>
         </el-input>
       </el-form-item>
       <el-form-item prop="code">
-        <el-input v-model="loginForm.code" auto-complete="off" placeholder="验证码" style="width: 63%" @keyup.enter.native="handleLogin">
+        <el-input v-model="loginForm.code" :placeholder="$t('placeholderverificationcode')" auto-complete="off" style="width: 63%" @keyup.enter.native="handleLogin">
           <svg-icon slot="prefix" icon-class="validCode" class="el-input__icon input-icon"/>
         </el-input>
         <div class="login-code">
           <img :src="codeUrl" @click="getCode">
         </div>
       </el-form-item>
-      <el-checkbox v-model="loginForm.rememberMe" style="margin:0px 0px 25px 0px;">记住我</el-checkbox>
+      <el-checkbox v-model="loginForm.rememberMe" style="margin:0px 0px 25px 0px;">{{ $t('rememberme') }}</el-checkbox>
       <el-form-item style="width:100%;">
-        <el-button :loading="loading" size="medium" type="primary" style="width:100%;" @click.native.prevent="handleLogin">
-          <span v-if="!loading">登 录</span>
-          <span v-else>登 录 中...</span>
+        <el-button :loading="loading" size="medium" type="primary" style="width:50%;" @click.native.prevent="handleLogin">
+          <span v-if="!loading">{{ $t('login') }}</span>
+          <span v-else>{{ $t('loggingin') }}</span>
         </el-button>
+        <a href="pages-recoverpw.html" class="text-muted"> <svg-icon icon-class="password"/> {{ $t('forgotpassword') }} </a>
       </el-form-item>
     </el-form>
     <!--  底部  -->
@@ -42,6 +44,9 @@ import { encrypt } from '@/utils/rsaEncrypt'
 import Config from '@/config'
 import { getCodeImg } from '@/api/login'
 import Cookies from 'js-cookie'
+import i18n from '../lang/lang'
+
+var lang = i18n.messages.en
 export default {
   name: 'Login',
   data() {
@@ -56,9 +61,9 @@ export default {
         uuid: ''
       },
       loginRules: {
-        username: [{ required: true, trigger: 'blur', message: '用户名不能为空' }],
-        password: [{ required: true, trigger: 'blur', message: '密码不能为空' }],
-        code: [{ required: true, trigger: 'change', message: '验证码不能为空' }]
+        username: [{ required: true, trigger: 'blur', message: lang.errorusername }],
+        password: [{ required: true, trigger: 'blur', message: lang.errorpassword }],
+        code: [{ required: true, trigger: 'change', message: lang.errorverificationcode }]
       },
       loading: false,
       redirect: undefined
@@ -143,8 +148,19 @@ export default {
     justify-content: center;
     align-items: center;
     height: 100%;
-    background-image:url(	https://docs-1255840532.cos.ap-shanghai.myqcloud.com/3968.jpg );
-    background-size: cover;
+    background: #f5f5f5;
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: rgb(245, 245, 245);
+   // background-image:url(	https://docs-1255840532.cos.ap-shanghai.myqcloud.com/3968.jpg );
+   // background-size: cover;
   }
   .title {
     margin: 0px auto 30px auto;
@@ -154,7 +170,7 @@ export default {
 
   .login-form {
     border-radius: 6px;
-    background: #ffffff;
+   // background: #ffffff;
     width: 400px;
     padding: 25px 25px 5px 25px;
     .el-input {
@@ -181,5 +197,55 @@ export default {
       cursor: pointer;
       vertical-align:middle
     }
+  }
+  .logon-header {
+    margin: 0px 0px 20px 80px
+  }
+  .el-input__prefix {
+    // position: absolute;
+    // height: 100%;
+    left: -20px;
+    top: 1px;
+    text-align: center;
+    color: #c0c4cc;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+  }
+  span.el-input__prefix {
+   // padding: .5rem .75rem;
+   //  padding-top: 0.5rem;
+    padding-right: 0.75rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    margin-bottom: 0;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.25;
+    color: #495057;
+    text-align: center;
+    background-color: #e9ecef;
+    border: 1px solid rgba(0,0,0,.15);
+    border-top-color: rgba(0, 0, 0, 0.15);
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-right-color: rgba(0, 0, 0, 0.15);
+    border-right-style: solid;
+    border-right-width: 1px;
+    border-bottom-color: rgba(0, 0, 0, 0.15);
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    border-left-color: rgba(0, 0, 0, 0.15);
+    border-left-style: solid;
+    border-left-width: 1px;
+    border-image-source: initial;
+    border-image-slice: initial;
+    border-image-width: initial;
+    border-image-outset: initial;
+    border-image-repeat: initial;
+    border-radius: .25rem;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
   }
 </style>
