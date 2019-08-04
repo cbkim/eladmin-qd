@@ -1,0 +1,22 @@
+{
+    "home" : "Home",
+    "profile" : "My profile",
+    "login" : "Log in",
+    "rememberme":"remember me",
+    "loggingin" : "logging in...",
+    "systemname" : "Incidents management system",
+    "placeholderusername":"Username",
+    "placeholderpassword":"password",
+    "placeholderverificationcode": "Verification code",
+    "errorusername":"Username can not be empty",
+    "errorverificationcode" : "verification code must be filled",
+    "errorpassword": "password can not be blank",
+    "forgotpassword" : " forgot password ?",
+    "add" : "Add",
+    "confirmdeletion":"confirm deletion?",
+    "search":"search",
+    "searchname":"Search for name",
+    "rolelist":"Role list",
+    "menuassignment":"Menu assignment"
+}
+  

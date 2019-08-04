@@ -1,0 +1,21 @@
+{
+    "home" : "首页",
+    "profile" : "My profile",
+    "login" : "登 录",
+    "rememberme":"记住我",
+    "loggingin" : "登 录 中...",
+    "errorusername" : "用户名不能为空",
+    "placeholderusername" : "用户名不能为空",
+    "placeholderpassword":"密码",
+    "placeholderverificationcode": "验证码",
+    "systemname" : "后台管理系统",
+    "errorverificationcode" : "验证码不能为空",
+    "errorpassword": "密码不能为空",
+    "add":"新增",
+    "confirmdeletion":"确定删除本条数据吗？",
+    "search":"搜索",
+    "searchname":"输入名称搜索",
+    "rolelist":"角色列表",
+    "menuassignment":"菜单分配"
+}
+  
